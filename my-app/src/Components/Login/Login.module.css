@@ -1,0 +1,134 @@
+.container{
+    padding-top: 10px;
+    
+}
+.container2{
+    display: flex;
+}
+.login {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 10 / 64%), 0 8px 16px rgb(0 10 0 / 34%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.login > form input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+}
+
+  h1{
+    color:#7091E6;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: -5px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.info span{
+    color: white;
+    font-size: 16px;
+    padding: 20px 20px;
+    cursor: pointer;
+}
+
+
+nav{
+    width: 95%;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    color: white;
+    font-family: normal;
+    font-size: 2em;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.logo i{
+    color: #7091E6;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    transition: 0.4s;
+}
+
+.menu a:last-child{
+    background-color: #7091E6;
+    border-radius: 8px;
+}
+
+.menu a:hover{
+    background-color: #7091E6;
+    border-radius: 8px;
+}
+
+.container3{
+    padding-left: 500px;
+    color: white;
+    max-width: 750px;
+    margin-top: -320px;
+
+}
+
+.container3 a{
+    text-decoration: none;
+    color: white;
+    padding: 2px 6px;
+    border: 1px solid white;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: 0.4s
+}
+
+.container3 h1{
+    font-size: 2em;
+    margin-bottom:-20px;
+    color: white;
+}
+
+.container3 h2{
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+.container3 span{
+    color: #7091E6;
+}
+
+.container3 p{
+    line-height: 2em;
+    /* margin: 15px 0; */
+}
+
+.container3 a:hover{
+    background-color: #7091E6;
+    border-radius: 8px;
+}
+
