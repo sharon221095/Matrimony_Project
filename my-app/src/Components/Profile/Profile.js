@@ -1,18 +1,24 @@
 import React from "react";
 import basestyle from "../Base.module.css";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Profile.css'
-import Search_icon_dark from '../../assets/search-b.png'
 import gift_dark from '../../assets/gift.png'
+import { Controller, useForm } from 'react-hook-form';
 
-const Profile = ({ setUserState, username }) => {
+const Profile = () => {
 
   const navigate = useNavigate();
 
+  const { register, clearErrors, handleSubmit, setValue, control, watch, reset, formState: { errors } } = useForm();
 
   const handleLogin = (e) => {
     navigate("/home")
   };
+
+  const handleReset = (e) => {
+    reset();
+    clearErrors();
+  }
 
 
   return (
@@ -28,7 +34,7 @@ const Profile = ({ setUserState, username }) => {
 
       <div className="container_1">
         <h1>Enter your Details</h1>
-      <form>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <table>
           <tr>
             <td>
@@ -39,20 +45,13 @@ const Profile = ({ setUserState, username }) => {
           <input type="email"
             name="email"
             id="email"
-            placeholder="Enter your email"/>
-            </td>
-            </tr>
-
-            <tr>
-            <td>
-          <label>Password </label>
-            </td>
-            <td>:</td>
-            <td>
-          <input type="password"
-            name="password"
-            id="password"
-            placeholder="Enter your Password"/>
+            placeholder="Enter your email"
+            {...register('email', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.email && "*Email required"}</p>
             </td>
             </tr>
 
@@ -65,22 +64,13 @@ const Profile = ({ setUserState, username }) => {
           <input type="number"
             name="number"
             id="number"
-            placeholder="Enter your number"/>
-            </td>
-            </tr>
-
-            <tr>
-            <td>
-          <label>Profile Created For</label>
-            </td>
-            <td>:</td>
-            <td>
-              <select>
-              <option>--select--</option>
-                <option>Self</option>
-                <option>Relative</option>
-                <option>Others</option>
-              </select>
+            placeholder="Enter your number"
+            {...register('number', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.number && "*Number required"}</p>
             </td>
             </tr>
 
@@ -93,7 +83,13 @@ const Profile = ({ setUserState, username }) => {
             <input type="text"
             name="fname"
             id="fname"
-            placeholder="Enter your first name"/>
+            placeholder="Enter your first name"
+            {...register('fname', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.fname && "*First name required"}</p>
             </td>
             </tr>
 
@@ -106,7 +102,13 @@ const Profile = ({ setUserState, username }) => {
             <input type="text"
             name="lname"
             id="lname"
-            placeholder="Enter your last name"/>
+            placeholder="Enter your last name"
+            {...register('lname', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.lname && "*Last name required"}</p>
             </td>
             </tr>
 
@@ -116,17 +118,31 @@ const Profile = ({ setUserState, username }) => {
             </td>
             <td>:</td>
             <td>
-            <input type="radio" name="gender"/> Male &nbsp; &nbsp; <input type="radio" name="gender"/> Female
+              <select id="gender"  {...register('gender', {
+              required: true,
+            }
+          )}
+          >
+                <option>--select--</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+              <p className={basestyle.error}>{!!errors.gender && "*Gender required"}</p>
             </td>
             </tr>
 
-            <tr>
+
+            <tr>  
             <td>
           <label>Living In</label>
             </td>
             <td>:</td>
             <td>
-              <select>
+              <select {...register('living_in', {
+              required: true,
+            }
+          )}
+          >
                 <option>--select--</option>
                 <option>Arunachal Pradesh</option>
                 <option>Assam</option>
@@ -138,6 +154,7 @@ const Profile = ({ setUserState, username }) => {
                 <option>Kerala</option>
                 <option>Tamil Nadu</option>
               </select>
+              <p className={basestyle.error}>{!!errors.living_in && "*required"}</p>
             </td>
             </tr>
 
@@ -150,7 +167,13 @@ const Profile = ({ setUserState, username }) => {
             <input type="text"
             name="address"
             id="address"
-            placeholder="Enter your address"/>
+            placeholder="Enter your address"
+            {...register('address', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.address && "*Address required"}</p>
             </td>
             </tr>
 
@@ -162,7 +185,13 @@ const Profile = ({ setUserState, username }) => {
             <td>
             <input type="date"
             name="date"
-            id="date"/>
+            id="date"
+            {...register('date', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.date && "*required"}</p>
             </td>
             </tr>
 
@@ -172,11 +201,16 @@ const Profile = ({ setUserState, username }) => {
             </td>
             <td>:</td>
             <td>
-              <select>
+              <select    {...register('marital_status', {
+              required: true,
+            }
+          )}
+          >
                 <option>--Select--</option>
                 <option>Single</option>
                 <option>Married</option>
               </select>
+              <p className={basestyle.error}>{!!errors.marital_status && "*required"}</p>
             </td>
             </tr> 
 
@@ -186,12 +220,17 @@ const Profile = ({ setUserState, username }) => {
             </td>
             <td>:</td>
             <td>
-              <select>
+              <select {...register('religion', {
+              required: true,
+            }
+          )}
+          >
                 <option>--Select Religion--</option>
                 <option>Hindu</option>
                 <option>Christian</option>
                 <option>Muslim</option>
               </select>
+              <p className={basestyle.error}>{!!errors.religion && "*required"}</p>
             </td>
             </tr> 
 
@@ -201,13 +240,18 @@ const Profile = ({ setUserState, username }) => {
             </td>
             <td>:</td>
             <td>
-              <select>
+              <select {...register('mother_tongue', {
+              required: true,
+            }
+          )}
+          >
                 <option>--Select--</option>
                 <option>Hindi</option>
                 <option>Malayalam</option>
                 <option>Tamil</option>
                 <option>kannada</option>
               </select>
+              <p className={basestyle.error}>{!!errors.mother_tongue && "*required"}</p>
             </td>
             </tr> 
 
@@ -217,7 +261,11 @@ const Profile = ({ setUserState, username }) => {
             </td>
             <td>:</td>
             <td>
-              <select>
+              <select {...register('height', {
+              required: true,
+            }
+          )}
+          >
                 <option>--Select--</option>
                 <option>150-155 cm</option>
                 <option>156-160 cm</option>
@@ -228,6 +276,7 @@ const Profile = ({ setUserState, username }) => {
                 <option>181-185 cm</option>
                 <option>186-190 cm</option>
               </select>
+              <p className={basestyle.error}>{!!errors.height && "*required"}</p>
             </td>
             </tr>
 
@@ -239,19 +288,27 @@ const Profile = ({ setUserState, username }) => {
             <td>
             <input type="file"
             name="date"
-            id="date"/>
+            id="date"
+            {...register('add_photo', {
+              required: true,
+            }
+          )}
+            />
+            <p className={basestyle.error}>{!!errors.add_photo && "*required"}</p>
             </td>
             </tr>
 
-            <tr></tr>
-            <tr></tr>
             <tr>
               <td></td>
               <td></td>
-              <td><button>Submit</button> &nbsp; <button>Reset</button></td>
+              <td>
+                <button type="submit">Submit</button>
+                <br/><br/>
+                <button type="submit" onClick={()=>handleReset()}>Reset</button>
+              </td>
             </tr>
 
-      </table>
+        </table>
       </form>
 
       </div>
